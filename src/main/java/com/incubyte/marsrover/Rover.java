@@ -38,6 +38,6 @@ public class Rover {
         return currentDirection;
     }
     public void setCurrentDirection(String newDirection){
-        this.currentDirection=newDirection;
+        this.currentDirection=Direction.valueOf(newDirection);
     }
 }
