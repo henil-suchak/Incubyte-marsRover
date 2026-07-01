@@ -5,7 +5,8 @@ import java.util.Map;
 public class CommandFactory {
 
     private static final Map<Character, RoverCommand> COMMAND_REGISTRY = Map.of(
-            'F', new ForwardCommand()
+            'F', new ForwardCommand(),
+            'B', new BackwardCommand()
     );
 
     public RoverCommand createCommand(char commandCharacter) {
