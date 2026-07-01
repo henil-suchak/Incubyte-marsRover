@@ -5,3 +5,4 @@ com/incubyte/marsrover/ForwardCommand.class
 com/incubyte/marsrover/Rover.class
 com/incubyte/marsrover/Direction.class
 com/incubyte/marsrover/CommandFactory.class
+com/incubyte/marsrover/RightwardCommand.class

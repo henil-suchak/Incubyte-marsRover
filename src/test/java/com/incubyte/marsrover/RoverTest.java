@@ -42,4 +42,13 @@ class RoverTest {
 
         assertEquals(Direction.WEST, rover.getCurrentDirection());
     }
+
+    @Test
+    void roverTurnsRightFromNorthToEast() {
+        Rover rover = new Rover(0, 0, Direction.NORTH);
+
+        rover.executeCommand('R');
+
+        assertEquals(Direction.EAST, rover.getCurrentDirection());
+    }
 }
