@@ -2,6 +2,8 @@ package com.incubyte.marsrover;
 
 public class Rover {
 
+    private final CommandFactory commandFactory = new CommandFactory();
+
     private int currentXCoordinate;
     private int currentYCoordinate;
     private Direction currentDirection;
@@ -10,6 +12,18 @@ public class Rover {
         this.currentXCoordinate = startingXCoordinate;
         this.currentYCoordinate = startingYCoordinate;
         this.currentDirection = startingDirection;
+    }
+
+    public void executeCommand(char command) {
+        RoverCommand roverCommand = commandFactory.createCommand(command);
+        if (roverCommand != null) {
+            roverCommand.execute(this);
+        }
+    }
+
+    public void setPosition(int newXCoordinate, int newYCoordinate) {
+        this.currentXCoordinate = newXCoordinate;
+        this.currentYCoordinate = newYCoordinate;
     }
 
     public int getCurrentXCoordinate() {
