@@ -23,4 +23,14 @@ class RoverTest {
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(1, rover.getCurrentYCoordinate());
     }
+
+    @Test
+    void roverMovesOneStepBackwardWhenFacingNorth() {
+        Rover rover = new Rover(0, 0, Direction.NORTH);
+
+        rover.executeCommand('B');
+
+        assertEquals(0, rover.getCurrentXCoordinate());
+        assertEquals(-1, rover.getCurrentYCoordinate());
+    }
 }
