@@ -31,6 +31,10 @@ public class Rover {
         return currentXCoordinate;
     }
 
+    public Grid getGrid() {
+        return grid;
+    }
+
     public int getCurrentYCoordinate() {
         return currentYCoordinate;
     }
