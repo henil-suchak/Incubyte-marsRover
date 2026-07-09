@@ -7,7 +7,7 @@ class RoverTest {
 
     @Test
     void roverInitializesAtGivenPositionAndDirection() {
-        Rover rover = new Rover(0, 0, Direction.NORTH);
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
 
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(0, rover.getCurrentYCoordinate());
@@ -16,7 +16,7 @@ class RoverTest {
 
     @Test
     void roverMovesOneStepForwardWhenFacingNorth() {
-        Rover rover = new Rover(0, 0, Direction.NORTH);
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
 
         rover.executeCommand('F');
 
@@ -26,7 +26,7 @@ class RoverTest {
 
     @Test
     void roverMovesOneStepBackwardWhenFacingNorth() {
-        Rover rover = new Rover(0, 0, Direction.NORTH);
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
 
         rover.executeCommand('B');
 
@@ -36,7 +36,7 @@ class RoverTest {
 
     @Test
     void roverTurnsLeftFromNorthToWest() {
-        Rover rover = new Rover(0, 0, Direction.NORTH);
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
 
         rover.executeCommand('L');
 
@@ -45,7 +45,7 @@ class RoverTest {
 
     @Test
     void roverTurnsRightFromNorthToEast() {
-        Rover rover = new Rover(0, 0, Direction.NORTH);
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
 
         rover.executeCommand('R');
 

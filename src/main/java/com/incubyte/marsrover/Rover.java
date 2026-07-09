@@ -3,15 +3,16 @@ package com.incubyte.marsrover;
 public class Rover {
 
     private final CommandFactory commandFactory = new CommandFactory();
-//    Grid grid =new
+    private final Grid grid ;
     private int currentXCoordinate;
     private int currentYCoordinate;
     private Direction currentDirection;
 
-    public Rover(int startingXCoordinate, int startingYCoordinate, Direction startingDirection) {
+    public Rover(int startingXCoordinate, int startingYCoordinate, Direction startingDirection, Grid grid) {
         this.currentXCoordinate = startingXCoordinate;
         this.currentYCoordinate = startingYCoordinate;
         this.currentDirection = startingDirection;
+        this.grid=grid;
     }
 
     public void executeCommand(char command) {
@@ -22,8 +23,8 @@ public class Rover {
     }
 
     public void setPosition(int newXCoordinate, int newYCoordinate) {
-        this.currentXCoordinate = newXCoordinate;
-        this.currentYCoordinate = newYCoordinate;
+        this.currentXCoordinate = grid.wrapXCoordinate(newXCoordinate);
+        this.currentYCoordinate = grid.wrapYCoordinate(newYCoordinate);
     }
 
     public int getCurrentXCoordinate() {
