@@ -27,4 +27,15 @@ class CommandInterpreterTest {
         assertEquals(1, rover.getCurrentYCoordinate());
         assertEquals(Direction.NORTH, rover.getCurrentDirection());
     }
+
+    @Test
+    void returnsCompletedStatusWhenNoObstacleBlocksPath() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of());
+        Rover rover = new Rover(0, 0, Direction.NORTH, grid);
+        CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        ExecutionResult result = commandInterpreter.interpret(rover, "FF");
+
+        assertEquals("COMPLETED", result.getStatus());
+    }
 }
