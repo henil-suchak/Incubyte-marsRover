@@ -15,11 +15,12 @@ public class Rover {
         this.grid=grid;
     }
 
-    public void executeCommand(char command) {
+    public boolean executeCommand(char command) {
         RoverCommand roverCommand = commandFactory.createCommand(command);
         if (roverCommand != null) {
-            roverCommand.execute(this);
+            return roverCommand.execute(this);
         }
+        return true;
     }
 
     public void setPosition(int newXCoordinate, int newYCoordinate) {

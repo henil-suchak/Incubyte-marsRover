@@ -3,7 +3,7 @@ package com.incubyte.marsrover;
 public class RightwardCommand implements RoverCommand {
 
     @Override
-    public void execute(Rover rover) {
+    public boolean execute(Rover rover) {
         String[] dirs = DirectionOrder.COUNTER_CLOCKWISE_ORDER;
         int i = 0;
         for (i = 0; i < 4; i++) {
@@ -12,5 +12,6 @@ public class RightwardCommand implements RoverCommand {
             }
         }
         rover.setCurrentDirection(dirs[(i + 1) % 4]);
+        return true;
     }
 }
