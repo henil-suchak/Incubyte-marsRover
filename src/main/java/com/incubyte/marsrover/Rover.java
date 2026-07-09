@@ -3,7 +3,7 @@ package com.incubyte.marsrover;
 public class Rover {
 
     private final CommandFactory commandFactory = new CommandFactory();
-
+//    Grid grid =new
     private int currentXCoordinate;
     private int currentYCoordinate;
     private Direction currentDirection;

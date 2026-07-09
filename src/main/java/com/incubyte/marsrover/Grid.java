@@ -15,22 +15,20 @@ public class Grid {
     }
 
     public int wrapYCoordinate(int yCoordinate) {
-        if (yCoordinate > maxYCoordinate) {
-            return minYCoordinate;
-        }
-        if (yCoordinate < minYCoordinate) {
-            return maxYCoordinate;
-        }
-        return yCoordinate;
+        return wrapValue(yCoordinate, minYCoordinate, maxYCoordinate);
     }
 
     public int wrapXCoordinate(int xCoordinate) {
-        if (xCoordinate > maxXCoordinate) {
-            return minXCoordinate;
+        return wrapValue(xCoordinate, minXCoordinate, maxXCoordinate);
+    }
+
+    private int wrapValue(int value, int minValue, int maxValue) {
+        if (value > maxValue) {
+            return minValue;
         }
-        if (xCoordinate < minXCoordinate) {
-            return maxXCoordinate;
+        if (value < minValue) {
+            return maxValue;
         }
-        return xCoordinate;
+        return value;
     }
 }
