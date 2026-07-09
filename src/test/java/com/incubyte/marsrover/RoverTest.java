@@ -83,4 +83,14 @@ class RoverTest {
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(1, rover.getCurrentYCoordinate());
     }
+    @Test
+    void roverDoesNotMoveWhenObstacleBlocksBackwardPath() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of(new int[]{0, -2}));
+        Rover rover = new Rover(0, -1, Direction.NORTH, grid);
+
+        rover.executeCommand('B');
+
+        assertEquals(0, rover.getCurrentXCoordinate());
+        assertEquals(-1, rover.getCurrentYCoordinate());
+    }
 }
