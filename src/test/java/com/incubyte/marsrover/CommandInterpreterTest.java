@@ -71,4 +71,20 @@ class CommandInterpreterTest {
 
         assertEquals(java.util.List.of('F'), result.getCommandsExecuted());
     }
+    @Test
+    void replicatesSpecSampleScenarioForObstacleBlocking() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of(new int[]{0, 2}));
+        Rover rover = new Rover(0, 0, Direction.NORTH, grid);
+        CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        ExecutionResult result = commandInterpreter.interpret(rover, "FFRFLB");
+
+        assertEquals("BLOCKED", result.getStatus());
+        assertEquals(0, result.getLastSafeX());
+        assertEquals(1, result.getLastSafeY());
+        assertEquals("NORTH", rover.getCurrentDirection().name());
+        assertEquals(0, result.getObstacleX());
+        assertEquals(2, result.getObstacleY());
+        assertEquals(java.util.List.of('F'), result.getCommandsExecuted());
+    }
 }
