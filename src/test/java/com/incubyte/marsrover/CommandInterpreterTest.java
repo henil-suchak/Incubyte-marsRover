@@ -7,7 +7,7 @@ class CommandInterpreterTest {
 
     @Test
     void executesEachCharacterInCommandStringInOrder() {
-        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10, java.util.List.of()));
         CommandInterpreter commandInterpreter = new CommandInterpreter();
 
         commandInterpreter.interpret(rover, "FF");

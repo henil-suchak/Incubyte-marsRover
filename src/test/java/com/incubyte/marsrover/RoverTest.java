@@ -7,7 +7,7 @@ class RoverTest {
 
     @Test
     void roverInitializesAtGivenPositionAndDirection() {
-        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10, java.util.List.of()));
 
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(0, rover.getCurrentYCoordinate());
@@ -16,7 +16,7 @@ class RoverTest {
 
     @Test
     void roverMovesOneStepForwardWhenFacingNorth() {
-        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10, java.util.List.of()));
 
         rover.executeCommand('F');
 
@@ -26,7 +26,7 @@ class RoverTest {
 
     @Test
     void roverMovesOneStepBackwardWhenFacingNorth() {
-        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10, java.util.List.of()));
 
         rover.executeCommand('B');
 
@@ -36,7 +36,7 @@ class RoverTest {
 
     @Test
     void roverTurnsLeftFromNorthToWest() {
-        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10, java.util.List.of()));
 
         rover.executeCommand('L');
 
@@ -45,15 +45,16 @@ class RoverTest {
 
     @Test
     void roverTurnsRightFromNorthToEast() {
-        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10));
+        Rover rover = new Rover(0, 0, Direction.NORTH, new Grid(-10, 10, -10, 10, java.util.List.of()));
 
         rover.executeCommand('R');
 
         assertEquals(Direction.EAST, rover.getCurrentDirection());
     }
+
     @Test
     void roverWrapsToSouthEdgeWhenMovingForwardPastNorthBoundary() {
-        Grid grid = new Grid(-10, 10, -10, 10);
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of());
         Rover rover = new Rover(0, 10, Direction.NORTH, grid);
 
         rover.executeCommand('F');
@@ -61,9 +62,10 @@ class RoverTest {
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(-10, rover.getCurrentYCoordinate());
     }
+
     @Test
     void roverWrapsToWestEdgeWhenMovingForwardPastEastBoundary() {
-        Grid grid = new Grid(-10, 10, -10, 10);
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of());
         Rover rover = new Rover(10, 0, Direction.EAST, grid);
 
         rover.executeCommand('F');

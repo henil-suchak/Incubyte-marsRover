@@ -7,15 +7,16 @@ class GridTest {
 
     @Test
     void wrapsYCoordinateFromNorthEdgeToSouthEdge() {
-        Grid grid = new Grid(-10, 10, -10, 10);
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of());
 
         int wrappedY = grid.wrapYCoordinate(11);
 
         assertEquals(-10, wrappedY);
     }
+
     @Test
     void wrapsXCoordinateFromEastEdgeToWestEdge() {
-        Grid grid = new Grid(-10, 10, -10, 10);
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of());
 
         int wrappedX = grid.wrapXCoordinate(11);
 
@@ -31,4 +32,3 @@ class GridTest {
         assertEquals(true, hasObstacle);
     }
 }
-
