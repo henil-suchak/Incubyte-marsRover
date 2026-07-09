@@ -38,4 +38,15 @@ class CommandInterpreterTest {
 
         assertEquals("COMPLETED", result.getStatus());
     }
+    @Test
+    void reportsLastSafePositionWhenBlockedByObstacle() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of(new int[]{0, 2}));
+        Rover rover = new Rover(0, 0, Direction.NORTH, grid);
+        CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        ExecutionResult result = commandInterpreter.interpret(rover, "FFR");
+
+        assertEquals(0, result.getLastSafeX());
+        assertEquals(1, result.getLastSafeY());
+    }
 }
