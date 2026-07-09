@@ -61,4 +61,14 @@ class CommandInterpreterTest {
         assertEquals(0, result.getObstacleX());
         assertEquals(2, result.getObstacleY());
     }
+    @Test
+    void reportsCommandsExecutedBeforeBlocked() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of(new int[]{0, 2}));
+        Rover rover = new Rover(0, 0, Direction.NORTH, grid);
+        CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        ExecutionResult result = commandInterpreter.interpret(rover, "FFR");
+
+        assertEquals(java.util.List.of('F'), result.getCommandsExecuted());
+    }
 }
