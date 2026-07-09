@@ -7,9 +7,9 @@ public class CommandInterpreter {
             char command = commands.charAt(i);
             boolean succeeded = rover.executeCommand(command);
             if (!succeeded) {
-                return new ExecutionResult("BLOCKED");
+                return new ExecutionResult("BLOCKED", rover.getCurrentXCoordinate(), rover.getCurrentYCoordinate());
             }
         }
-        return new ExecutionResult("COMPLETED");
+        return new ExecutionResult("COMPLETED", rover.getCurrentXCoordinate(), rover.getCurrentYCoordinate());
     }
 }
