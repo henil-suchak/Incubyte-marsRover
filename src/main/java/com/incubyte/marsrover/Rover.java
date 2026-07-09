@@ -6,6 +6,9 @@ public class Rover {
     private final Grid grid ;
     private int currentXCoordinate;
     private int currentYCoordinate;
+    private int lastBlockedX;
+    private int lastBlockedY;
+
     private Direction currentDirection;
 
     public Rover(int startingXCoordinate, int startingYCoordinate, Direction startingDirection, Grid grid) {
@@ -29,10 +32,20 @@ public class Rover {
     }
     public boolean tryMoveTo(int targetXCoordinate, int targetYCoordinate) {
         if (grid.hasObstacleAt(targetXCoordinate, targetYCoordinate)) {
+            this.lastBlockedX = targetXCoordinate;
+            this.lastBlockedY = targetYCoordinate;
             return false;
         }
         setPosition(targetXCoordinate, targetYCoordinate);
         return true;
+    }
+
+    public int getLastBlockedX() {
+        return lastBlockedX;
+    }
+
+    public int getLastBlockedY() {
+        return lastBlockedY;
     }
 
     public int getCurrentXCoordinate() {
