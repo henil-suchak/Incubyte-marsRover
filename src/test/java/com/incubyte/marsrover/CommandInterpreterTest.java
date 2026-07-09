@@ -49,4 +49,16 @@ class CommandInterpreterTest {
         assertEquals(0, result.getLastSafeX());
         assertEquals(1, result.getLastSafeY());
     }
+
+    @Test
+    void reportsObstacleCoordinateWhenBlocked() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of(new int[]{0, 2}));
+        Rover rover = new Rover(0, 0, Direction.NORTH, grid);
+        CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        ExecutionResult result = commandInterpreter.interpret(rover, "FFR");
+
+        assertEquals(0, result.getObstacleX());
+        assertEquals(2, result.getObstacleY());
+    }
 }
