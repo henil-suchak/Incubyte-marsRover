@@ -61,4 +61,14 @@ class RoverTest {
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(-10, rover.getCurrentYCoordinate());
     }
+    @Test
+    void roverWrapsToWestEdgeWhenMovingForwardPastEastBoundary() {
+        Grid grid = new Grid(-10, 10, -10, 10);
+        Rover rover = new Rover(10, 0, Direction.EAST, grid);
+
+        rover.executeCommand('F');
+
+        assertEquals(-10, rover.getCurrentXCoordinate());
+        assertEquals(0, rover.getCurrentYCoordinate());
+    }
 }
