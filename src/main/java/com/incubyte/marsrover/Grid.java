@@ -23,4 +23,14 @@ public class Grid {
         }
         return yCoordinate;
     }
+
+    public int wrapXCoordinate(int xCoordinate) {
+        if (xCoordinate > maxXCoordinate) {
+            return minXCoordinate;
+        }
+        if (xCoordinate < minXCoordinate) {
+            return maxXCoordinate;
+        }
+        return xCoordinate;
+    }
 }
