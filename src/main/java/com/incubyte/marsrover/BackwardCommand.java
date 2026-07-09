@@ -8,11 +8,6 @@ public class BackwardCommand implements RoverCommand {
         int targetXCoordinate = rover.getCurrentXCoordinate() - direction.getDeltaX();
         int targetYCoordinate = rover.getCurrentYCoordinate() - direction.getDeltaY();
 
-        Grid grid = rover.getGrid();
-        if (grid.hasObstacleAt(targetXCoordinate, targetYCoordinate)) {
-            return;
-        }
-
-        rover.setPosition(targetXCoordinate, targetYCoordinate);
+        rover.tryMoveTo(targetXCoordinate, targetYCoordinate);
     }
 }

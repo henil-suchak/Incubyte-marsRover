@@ -26,6 +26,13 @@ public class Rover {
         this.currentXCoordinate = grid.wrapXCoordinate(newXCoordinate);
         this.currentYCoordinate = grid.wrapYCoordinate(newYCoordinate);
     }
+    public boolean tryMoveTo(int targetXCoordinate, int targetYCoordinate) {
+        if (grid.hasObstacleAt(targetXCoordinate, targetYCoordinate)) {
+            return false;
+        }
+        setPosition(targetXCoordinate, targetYCoordinate);
+        return true;
+    }
 
     public int getCurrentXCoordinate() {
         return currentXCoordinate;
