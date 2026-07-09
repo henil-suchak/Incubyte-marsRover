@@ -15,4 +15,16 @@ class CommandInterpreterTest {
         assertEquals(0, rover.getCurrentXCoordinate());
         assertEquals(2, rover.getCurrentYCoordinate());
     }
+    @Test
+    void stopsExecutingRemainingCommandsWhenObstacleBlocksPath() {
+        Grid grid = new Grid(-10, 10, -10, 10, java.util.List.of(new int[]{0, 2}));
+        Rover rover = new Rover(0, 0, Direction.NORTH, grid);
+        CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        commandInterpreter.interpret(rover, "FFR");
+
+        assertEquals(0, rover.getCurrentXCoordinate());
+        assertEquals(1, rover.getCurrentYCoordinate());
+        assertEquals(Direction.NORTH, rover.getCurrentDirection());
+    }
 }
