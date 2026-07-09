@@ -13,4 +13,13 @@ class GridTest {
 
         assertEquals(-10, wrappedY);
     }
+    @Test
+    void wrapsXCoordinateFromEastEdgeToWestEdge() {
+        Grid grid = new Grid(-10, 10, -10, 10);
+
+        int wrappedX = grid.wrapXCoordinate(11);
+
+        assertEquals(-10, wrappedX);
+    }
 }
+
